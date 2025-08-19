@@ -1,0 +1,199 @@
+/* Vault Page Container */
+.vault-container {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Page Heading */
+.vault-container h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2575fc;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.vault-container h2::after {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  margin: 12px auto 0;
+  border-radius: 8px;
+}
+
+/* Messages */
+.vault-message {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  color: #666;
+  font-style: italic;
+}
+
+.vault-message.error {
+  color: #e63946;
+  font-weight: 700;
+  animation: shake 0.4s ease;
+}
+
+/* Records Grid */
+.records-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+/* Record Card */
+.record-card {
+  background: linear-gradient(135deg, #ffffff, #f9f9f9);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  padding: 1.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.record-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(37,117,252,0.1), transparent 70%);
+  z-index: 0;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+}
+
+.record-card:hover::before {
+  opacity: 1;
+}
+
+.record-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Record Content */
+.record-content {
+  position: relative;
+  z-index: 1;
+}
+
+.record-content h3 {
+  font-size: 1.5rem;
+  color: #6a11cb;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+}
+
+.record-content p {
+  font-size: 1rem;
+  color: #444;
+  margin: 0.4rem 0;
+  line-height: 1.5;
+}
+
+/* Badge (date or type indicator) */
+.record-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-top: 0.8rem;
+  box-shadow: 0 3px 10px rgba(37,117,252,0.3);
+}
+
+/* Action Buttons */
+.record-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.3rem;
+}
+
+.record-actions button {
+  flex: 1;
+  margin: 0 0.5rem;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Button Ripple Effect */
+.record-actions button::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+  z-index: -1;
+}
+
+.record-actions button:active::after {
+  width: 250%;
+  height: 250%;
+}
+
+/* Edit Button */
+.record-actions .edit-btn {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white;
+}
+
+.record-actions .edit-btn:hover {
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(46,125,50,0.4);
+}
+
+/* Delete Button */
+.record-actions .delete-btn {
+  background: linear-gradient(135deg, #e53935, #b71c1c);
+  color: white;
+}
+
+.record-actions .delete-btn:hover {
+  background: linear-gradient(135deg, #c62828, #8e0000);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(183,28,28,0.4);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+}

@@ -1,0 +1,91 @@
+/* === Card Container === */
+.record-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-radius: 18px;
+  padding: 1.8rem;
+  margin: 1rem 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+/* === Border Glow === */
+.record-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(135deg, #9c27b0, #42a5f5);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: 0.4s ease;
+  opacity: 0.7;
+}
+
+/* === Hover Glow === */
+.record-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+}
+.record-card:hover::before {
+  opacity: 1;
+  filter: hue-rotate(40deg);
+}
+
+/* === Title === */
+.record-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #4a148c;
+  margin-bottom: 0.5rem;
+}
+
+/* === Description === */
+.record-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* === Date Badge === */
+.record-date {
+  display: inline-block;
+  background: linear-gradient(135deg, #9c27b0, #42a5f5);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+/* === Image === */
+.record-image-wrapper {
+  margin-top: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.record-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: transform 0.4s ease;
+}
+
+.record-image:hover {
+  transform: scale(1.05);
+}

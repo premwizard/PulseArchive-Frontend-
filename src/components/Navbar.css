@@ -1,0 +1,61 @@
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: #ffffff; /* clean white background */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Logo */
+.navbar .logo a {
+  color: #2c3e50; /* dark modern color */
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+/* Menu links */
+.navbar .menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar .menu a {
+  color: #2c3e50;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar .menu a:hover {
+  background-color: #e0f7fa; /* subtle hover background */
+  color: #00796b; /* accent hover color */
+}
+
+/* Logout button */
+.navbar .menu .logout-btn {
+  padding: 6px 14px;
+  background-color: #ff5252;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar .menu .logout-btn:hover {
+  background-color: #e04848;
+  transform: translateY(-1px); /* subtle lift effect */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}

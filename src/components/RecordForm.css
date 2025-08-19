@@ -1,0 +1,265 @@
+/* === Background wrapper === */
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+  position: relative;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+/* === Floating soft shapes === */
+.bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.18;
+  filter: blur(70px);
+  animation: floaty 14s infinite ease-in-out alternate;
+}
+
+.shape1 {
+  width: 340px;
+  height: 340px;
+  background: #a18cd1;
+  top: -100px;
+  left: -120px;
+}
+.shape2 {
+  width: 420px;
+  height: 420px;
+  background: #fbc2eb;
+  bottom: -150px;
+  right: -150px;
+  animation-delay: 4s;
+}
+.shape3 {
+  width: 300px;
+  height: 300px;
+  background: #42a5f5;
+  top: 50%;
+  left: 50%;
+  animation-delay: 7s;
+}
+
+@keyframes floaty {
+  from { transform: translateY(0px) scale(1); }
+  to { transform: translateY(-40px) scale(1.07); }
+}
+
+/* === Form Container === */
+.record-form {
+  position: relative;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  max-width: 640px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  overflow: hidden;
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.15),
+    inset 0 0 30px rgba(255, 255, 255, 0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* === Gradient Glow Border === */
+.record-form::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(135deg, #9c27b0, #673ab7, #42a5f5, #26c6da);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: borderGlow 10s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* === Glass reflection shimmer === */
+.record-form::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg,
+    transparent 40%,
+    rgba(255,255,255,0.15) 50%,
+    transparent 60%);
+  transform: rotate(25deg);
+  animation: shimmer 14s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-60%) rotate(25deg); }
+  100% { transform: translateX(60%) rotate(25deg); }
+}
+
+/* === Form Heading === */
+.record-form h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #4a148c;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.record-form h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #9c27b0, #42a5f5);
+}
+
+/* === Inputs === */
+.input-group {
+  position: relative;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1.6px solid #ccc;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.92);
+  transition: all 0.3s ease;
+}
+
+.input-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* === Floating Labels (soft) === */
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #9c27b0;
+  box-shadow: 0 0 15px rgba(156, 39, 176, 0.25);
+  background: #fff;
+}
+
+/* === File Upload === */
+.file-input label {
+  display: inline-block;
+  background: linear-gradient(135deg, #9c27b0, #673ab7);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.file-input label:hover {
+  background: linear-gradient(135deg, #673ab7, #42a5f5);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.file-input input {
+  display: none;
+}
+
+/* === Image Preview Card === */
+.image-preview {
+  text-align: center;
+}
+
+.image-preview img {
+  width: 210px;
+  border-radius: 18px;
+  margin-top: 12px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.image-preview img:hover {
+  transform: scale(1.07) rotate(1deg);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.25);
+}
+
+/* === Button === */
+button {
+  padding: 15px;
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(270deg, #9c27b0, #673ab7, #42a5f5);
+  background-size: 600% 600%;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  animation: gradientMove 9s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(156,39,176,0.4);
+}
+
+/* === Ripple effect on button === */
+button::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 50%;
+  left: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 10%, transparent 10.01%);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 0.6s, opacity 1s;
+}
+
+button:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  transition: 0s;
+}
+
+button:disabled {
+  background: #bbb;
+  cursor: not-allowed;
+  animation: none;
+  box-shadow: none;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
