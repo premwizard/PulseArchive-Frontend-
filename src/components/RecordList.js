@@ -27,7 +27,7 @@ const RecordList = ({ records, onDeleteRecord, onEditRecord }) => {
           {record.photoUrl ? (
             <div style={styles.photoContainer}>
               <img
-                src={record.photoUrl.startsWith("http") ? record.photoUrl : `http://localhost:5000${record.photoUrl}`}
+                src={record.photoUrl.startsWith("http") ? record.photoUrl : `https://pulsearchive-backend.onrender.com${record.photoUrl}`}
                 alt={record.title}
                 style={styles.photo}
               />

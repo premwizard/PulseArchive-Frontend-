@@ -54,7 +54,7 @@ const Dashboard = () => {
     if (!token) return;
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:5000/api/records", {
+      const res = await axios.get("https://pulsearchive-backend.onrender.com/api/records", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRecords(res.data);

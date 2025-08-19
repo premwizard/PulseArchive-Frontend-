@@ -16,7 +16,7 @@ const Vault = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get("http://localhost:5000/api/records", {
+      const res = await axios.get("https://pulsearchive-backend.onrender.com/api/records", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRecords(res.data);
@@ -38,7 +38,7 @@ const Vault = () => {
     if (!window.confirm("Are you sure you want to delete this record?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/records/${id}`, {
+      await axios.delete(`https://pulsearchive-backend.onrender.com/api/records/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRecords((prev) => prev.filter((r) => r._id !== id));

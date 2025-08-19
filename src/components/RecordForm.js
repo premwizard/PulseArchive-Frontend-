@@ -15,7 +15,7 @@ const RecordForm = ({ token, onSaveRecord, editingRecord }) => {
       setTitle(editingRecord.title || "");
       setDescription(editingRecord.description || "");
       setDate(editingRecord.date ? editingRecord.date.split("T")[0] : "");
-      setPreview(editingRecord.photo ? `http://localhost:5000/${editingRecord.photo}` : null);
+      setPreview(editingRecord.photo ? `https://pulsearchive-backend.onrender.com/${editingRecord.photo}` : null);
     } else {
       setTitle("");
       setDescription("");
@@ -42,13 +42,13 @@ const RecordForm = ({ token, onSaveRecord, editingRecord }) => {
 
       if (editingRecord?._id) {
         await axios.put(
-          `http://localhost:5000/api/records/${editingRecord._id}`,
+          `https://pulsearchive-backend.onrender.com/api/records/${editingRecord._id}`,
           formData,
           { headers: { Authorization: `Bearer ${token}`, "Content-Type": "multipart/form-data" } }
         );
       } else {
         await axios.post(
-          "http://localhost:5000/api/records",
+          "https://pulsearchive-backend.onrender.com/api/records",
           formData,
           { headers: { Authorization: `Bearer ${token}`, "Content-Type": "multipart/form-data" } }
         );

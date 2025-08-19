@@ -13,7 +13,7 @@ const RecordCard = ({ record }) => {
       {record.photo && (
         <div className="record-image-wrapper">
           <img
-            src={`http://localhost:5000/${record.photo}`}
+            src={`https://pulsearchive-backend.onrender.com/${record.photo}`}
             alt={record.title}
             className="record-image"
           />
