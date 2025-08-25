@@ -34,7 +34,7 @@ const LoginForm = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        "https://pulsearchive-backend.onrender.com" + "/api/auth/login",
+        "https://pulsearchive-backend.onrender.com" + "/api/v1/auth/login",
         { email, password }
       );
 

@@ -1,28 +1,42 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ import navigate
 import "./Register.css";
 
 function Register({ onRegister }) {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate(); // ✅ hook for navigation
+
+  // Auto-switch API URL between local & production
+  const API_URL =
+    process.env.NODE_ENV === "production"
+      ? "https://pulsearchive-backend.onrender.com/api/v1/auth/register"
+      : "http://localhost:5000/api/v1/auth/register";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     try {
-      const res = await fetch("https://pulsearchive-backend.onrender.com/api/auth/register", {
+      const res = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({ name, email, password }),
       });
 
       const data = await res.json();
 
       if (res.ok) {
-        alert("✅ Registration successful! You can now log in.");
-        onRegister(); // redirect to login page
+        // ✅ Save token in localStorage
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+
+        onRegister?.(data.user, data.token); // optional callback
+
+        // ✅ Redirect to dashboard/home
+        navigate("/login"); // change "/dashboard" to "/home" if needed
       } else {
         setError(data.message || "Registration failed");
       }
@@ -35,7 +49,7 @@ function Register({ onRegister }) {
     <div className="register-container">
       {/* Left Side */}
       <div className="register-left">
-        <h1>Join Us Today </h1>
+        <h1>Join Us Today</h1>
       </div>
 
       {/* Right Side */}
@@ -48,9 +62,9 @@ function Register({ onRegister }) {
           <div className="input-group">
             <input
               type="text"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
